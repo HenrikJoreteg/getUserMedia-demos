@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo 1</title>
+        <script src="shim.js"></script>
+        <script>
+            navigator.getUserMedia({
+                audio: true,
+                video: true
+            }, function (stream) {
+                var videoEl = document.getElementById('me');
+                attachMedia(videoEl, stream);
+                console.log('APPROVED!');
+            }, function () {
+                console.log('DENIED, you silly web app!');
+            });
+        </script>
+    </head>
+    <body>
+        <h1>#1 Get Media</h1>
+        <video id="me" width="400" height="300">
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo 2</title>
+        <script src="shim.js"></script>
+        <script>
+            onDomReady(function () {
+                var video = document.querySelector('video'),
+                    canvas = document.querySelector('canvas'),
+                    img = document.querySelector('img'),
+                    context = canvas.getContext('2d'),
+                    localVideoStream;
+
+                navigator.getUserMedia(
+                    {
+                        audio: true,
+                        video: true
+                    }, 
+                    // success
+                    function (stream) {
+                        localVideoStream = stream;
+                        attachMedia(video, stream);
+                    }, 
+                    // failed
+                    function () {}
+                );       
+
+                video.addEventListener('click', function () {
+                    canvas.height = video.videoHeight;
+                    canvas.width = video.videoWidth;
+                    context.drawImage(video, 0, 0);
+                    img.src = canvas.toDataURL('image/png');
+                }, false);
+            });
+        </script>
+    </head>
+    <body>
+        <h1>#2 PhotoBooth</h1>
+        <video id="me" width="400" height="300"></video>
+        <canvas style="display: none;" width="400" height="300" ></canvas>
+        <img src="" width="400" height="300">
+    </body>
+</html>
