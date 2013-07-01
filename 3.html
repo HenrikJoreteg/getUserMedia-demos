@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <body>
+        <div id="localVideo"></div>
+        <div id="remotesVideos"></div>
         <script src="http://simplewebrtc.com/latest.js"></script> 
         <script>
             var webrtc = new WebRTC({
@@ -18,9 +20,5 @@
                 webrtc.joinRoom('your awesome room name');
             });
         </script>
-    </head>
-    <body>
-        <div id="localVideo"></div>
-        <div id="remotesVideos"></div>
     </body>
 </html>
